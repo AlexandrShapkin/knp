@@ -5,12 +5,14 @@ package knp;
 option go_package = "/;knp";
 
 message PingArgs {
-    string source = 1;
+    string id = 1;
+    string addr = 2;
 }
 
 message PingReply {
-    string source = 1;
-    repeated Contact contacts = 2;
+    string id = 1;
+    string addr = 2;
+    repeated Contact contacts = 3;
 }
 
 message StoreArgs {
