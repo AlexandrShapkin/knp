@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package knp;
+
+option go_package = "/;knp";
+
+message PingArgs {
+    string source = 1;
+}
+
+message PingReply {
+    string source = 1;
+    repeated Contact contacts = 2;
+}
+
+message StoreArgs {
+    string source = 1;
+    string key = 2;
+    bytes val = 3;
+}
+
+message StoreReply {}
+
+message FindValueArgs {
+    string source = 1;
+    string key = 2;
+}
+
+message FindValueReply {
+    bytes val = 1;
+    repeated Contact contacts = 2;
+}
+
+message FindNodeArgs {
+    string source = 1;
+    string key = 2;
+}
+
+message FindNodeReply {
+    repeated Contact contacts = 1;
+}
+
+message Contact {
+    string source = 1;
+    string address = 2;
+}
+
+service KademliaService {
+    rpc Ping(PingArgs) returns (PingReply);
+    rpc Store(StoreArgs) returns (StoreReply);
+    rpc FindValue(FindValueArgs) returns (FindValueReply);
+    rpc FindNode(FindNodeArgs) returns (FindNodeReply);
+}
