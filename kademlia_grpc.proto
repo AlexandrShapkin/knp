@@ -4,38 +4,46 @@ package knp;
 
 option go_package = "/;knp";
 
+message Header {
+    string sender = 1;
+    string receiver = 2;
+}
+
 message PingArgs {
-    string id = 1;
-    string addr = 2;
+    Header header = 1;
+    string address = 2;
 }
 
 message PingReply {
-    string id = 1;
-    string addr = 2;
+    Header header = 1;
+    string address = 2;
     repeated Contact contacts = 3;
 }
 
 message StoreArgs {
-    string source = 1;
+    Header header = 1;
     string key = 2;
-    bytes val = 3;
+    bytes value = 3;
 }
 
-message StoreReply {}
+message StoreReply {
+    Header header = 1;
+}
 
 message FindValueArgs {
-    string source = 1;
+    Header header = 1;
     string key = 2;
 }
 
 message FindValueReply {
-    bytes val = 1;
-    repeated Contact contacts = 2;
+    Header header = 1;
+    bytes value = 2;
+    repeated Contact contacts = 3;
 }
 
 message FindNodeArgs {
-    string source = 1;
-    string key = 2;
+    Header header = 1;
+    string id = 2;
 }
 
 message FindNodeReply {
@@ -43,7 +51,7 @@ message FindNodeReply {
 }
 
 message Contact {
-    string source = 1;
+    string id = 1;
     string address = 2;
 }
 
