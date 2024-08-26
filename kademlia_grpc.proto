@@ -23,16 +23,19 @@ message PingReply {
 message StoreArgs {
     Header header = 1;
     string key = 2;
-    bytes value = 3;
+    string handler = 3; 
+    bytes value = 4;
 }
 
 message StoreReply {
     Header header = 1;
+    bytes value = 2;
 }
 
 message FindValueArgs {
     Header header = 1;
     string key = 2;
+    string handler = 3; 
 }
 
 message FindValueReply {
