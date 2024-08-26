@@ -47,7 +47,8 @@ message FindNodeArgs {
 }
 
 message FindNodeReply {
-    repeated Contact contacts = 1;
+    Header header = 1;
+    repeated Contact contacts = 2;
 }
 
 message Contact {
