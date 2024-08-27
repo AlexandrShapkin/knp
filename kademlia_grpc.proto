@@ -41,7 +41,6 @@ message FindValueArgs {
 message FindValueReply {
     Header header = 1;
     bytes value = 2;
-    repeated Contact contacts = 3;
 }
 
 message FindNodeArgs {
